@@ -28,7 +28,7 @@ const Product = (props) => {
             </ul> </div>
     </div>
     <button 
-    onClick={()=> {props.clickHandle(name)}}
+    onClick={()=> {props.clickHandle(props.product)}}
     className="btn-custom"><FontAwesomeIcon icon={faShoppingCart} />Add To Cart</button>
     </div>
     </div>

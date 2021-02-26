@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import fakeData from "../../../src/img/fakeData/index";
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    const first10 = fakeData.slice(0,10);
-    const clickHandle = (prod)=> {console.log('Clicked', prod)}
+    const first10 = fakeData.slice(0,15);
+const [cart, setCart] = useState([])
+    const clickHandle = (prod)=> {
+        console.log('Clicked', prod)
+const newCart = [...cart , prod];
+setCart(newCart);
+}
+
    const [products, setProducts] = useState(first10);
     return (
        
@@ -19,7 +26,9 @@ products.map(pd =>
     }
             </div>
             <div className="cart-container">
-                <h4>My Cart</h4>
+               <Cart cart=
+               {cart}></Cart> 
+
             </div>
         </div>
     );
