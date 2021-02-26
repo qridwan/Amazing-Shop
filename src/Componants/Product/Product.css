@@ -1,0 +1,25 @@
+.single-product-container {
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  border-bottom: 2px solid lightgray;
+}
+.details {
+  display: flex;
+}
+.shop-container-details p {
+  color: blue;
+  font-weight: 600;
+}
+
+.img-container {
+  padding-right: 15px;
+}
+
+.btn-custom {
+  padding: 5px 60px;
+  background-color: orange;
+  border: 1px solid black;
+  font-weight: 600;
+}
