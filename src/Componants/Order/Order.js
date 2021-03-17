@@ -32,10 +32,9 @@ function Order() {
   const [confirmed, setConfirmed] = useState(false);
 
   const clickToConfirm = () => {
-    console.log("clicked");
-    setCart([]);
-    processOrder();
-    setConfirmed(true);
+    // setCart([]);
+    // processOrder();
+    // setConfirmed(true);
   };
 
   return (
@@ -52,10 +51,10 @@ function Order() {
         {confirmed && <img src={ThankYou} alt="Thank You" />}
       </div>
       <Cart cart={cart}>
-        <Link to="/order">
+        <Link to="/shipment">
           <button onClick={clickToConfirm} className="btn-custom">
             {" "}
-            Confirm Order{" "}
+            Go For Shipment{" "}
           </button>
         </Link>
       </Cart>

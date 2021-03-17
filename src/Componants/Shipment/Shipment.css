@@ -1,0 +1,9 @@
+input {
+    display: block;
+margin: 5px auto;
+}
+.error {
+color: white;
+display: block;
+text-align: center
+}
