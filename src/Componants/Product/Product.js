@@ -13,7 +13,7 @@ const Product = (props) => {
     stock,
     star,
     features,
-    key
+    key,
   } = props.product;
   return (
     <div className="single-product-container">
