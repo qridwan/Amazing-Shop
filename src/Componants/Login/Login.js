@@ -26,23 +26,7 @@ let location = useLocation() ;
 let { from } = location.state || { from: { pathname: "/" } };
 
   const [newUser, setNewUser] = useState(false);
-  // const googleProvider = new firebase.auth.GoogleAuthProvider();
- 
-  // const handleGoogleSignIn = () => {
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(googleProvider)
-  //     .then((res) => {
-  //       const { displayName, email, photoURL } = res.user;
-  //       const isSignedIn = {
-  //         isSigned: true,
-  //         name: displayName,
-  //         email: email,
-  //         photo: photoURL
-  //       };
-  //       setUserInfo(isSignedIn);
-  //     });
-  // };
+
   const GoogleSignIn = () => {
     handleGoogleSignIn()
     .then(res => {

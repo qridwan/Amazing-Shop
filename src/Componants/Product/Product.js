@@ -36,7 +36,7 @@ const Product = (props) => {
               <h6>Ratings: {star}</h6>
               <ul>
                 {" "}
-                {features.map((desc, index) => (
+                {features?.map((desc, index) => (
                   <li key={index}>
                     <small>
                       {desc.description} : {desc.value}

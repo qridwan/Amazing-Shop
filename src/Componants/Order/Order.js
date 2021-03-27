@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import fakeData from "../../Info/fakeData";
 import {
   getDatabaseCart,
-  processOrder,
-  removeFromDatabaseCart
+  removeFromDatabaseCart,
 } from "../../Info/utilities/databaseManager";
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
@@ -16,12 +14,16 @@ function Order() {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    const cartProducts = productKeys.map((key) => {
-      const product = fakeData.find((pd) => pd.key === key);
-      product.quantity = savedCart[key];
-      return product;
-    });
-    setCart(cartProducts);
+
+    fetch("http://localhost:5000/productsByKeys", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productKeys),
+    })
+      .then((res) => res.json())
+      .then((data) => setCart(data));
   }, []);
   const removeProduct = (ky) => {
     const updatedCart = cart.filter((pd) => pd.key !== ky);
@@ -29,7 +31,7 @@ function Order() {
     removeFromDatabaseCart(ky);
   };
 
-  const [confirmed, setConfirmed] = useState(false);
+  const [confirmed] = useState(false);
 
   const clickToConfirm = () => {
     // setCart([]);

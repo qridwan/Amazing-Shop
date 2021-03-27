@@ -2,7 +2,6 @@ import React from "react";
 import "./Ordereditems.css";
 
 const Oredereditems = (props) => {
-  console.log(props.product);
   const { name, seller, quantity, key } = props.product;
   return (
     <div className="single-product-container">
