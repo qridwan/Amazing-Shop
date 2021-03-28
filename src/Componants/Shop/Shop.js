@@ -13,7 +13,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://https://emmajhon-server.herokuapp.com5000/product")
+    fetch("https://emmajhon-server.herokuapp.com/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,7 +21,7 @@ const Shop = () => {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    fetch("http://https://emmajhon-server.herokuapp.com5000/productsByKeys", {
+    fetch("https://emmajhon-server.herokuapp.com/productsByKeys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

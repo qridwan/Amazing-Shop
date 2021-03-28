@@ -16,7 +16,7 @@ const Shipment = () => {
       orderTime: new Date(),
     };
 
-    fetch("http://https://emmajhon-server.herokuapp.com5000/addOrder", {
+    fetch("https://emmajhon-server.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import fakeData from "../../Info/fakeData";
 
 function Inventory() {
   const handleAddProduct = () => {
-    // fetch("http://https://emmajhon-server.herokuapp.com5000/allProduct", {
+    // fetch("https://emmajhon-server.herokuapp.com/allProduct", {
     //   method: "POST",
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify(fakeData),
