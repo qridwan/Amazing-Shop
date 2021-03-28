@@ -5,7 +5,7 @@ import { getDatabaseCart, processOrder } from "../../Info/utilities/databaseMana
 import "./Shipment.css";
 const Shipment = () => {
   const { register, handleSubmit, errors } = useForm();
-  const [loggedIn, setLoggedIn] = useContext(UserContext);
+  const [loggedIn ] = useContext(UserContext);
 
   const onSubmit = (data) => {
     const savedCart = getDatabaseCart();
@@ -16,7 +16,7 @@ const Shipment = () => {
       orderTime: new Date(),
     };
 
-    fetch("http://localhost:5000/addOrder", {
+    fetch("http://https://emmajhon-server.herokuapp.com5000/addOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

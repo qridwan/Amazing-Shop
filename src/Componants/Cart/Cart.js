@@ -3,8 +3,15 @@ import React from "react";
 const Cart = (props) => {
   const cart = props.cart;
 
-  let productPrice = 0;
-  cart.map((arr) => (productPrice = productPrice + arr.price * (arr.quantity || 1) ));
+  // let productPrice = 0;
+  // cart.map((arr) => (productPrice = productPrice + arr.price * (arr.quantity || 1) ));
+
+   //const total = cart.reduce( (total, prd) => total + prd.price , 0 )
+   let productPrice = 0;
+   for(let i = 0; i< cart.length; i++){
+       const product = cart[i];
+       productPrice = productPrice + product.price * product.quantity || 1;
+   }
   
   let shipping = 0;
   if (productPrice < 35 && productPrice !== 0) {
