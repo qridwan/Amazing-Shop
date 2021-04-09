@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../Images/logo.png";
 import "./Header.css";
 const Header = () => {
-  const [setLoggedIn] = useContext(UserContext);
+  const [LoggedIn, setLoggedIn] = useContext(UserContext);
   return (
     <div className="header">
       <img src={logo} alt="EmmaJhonShop" />

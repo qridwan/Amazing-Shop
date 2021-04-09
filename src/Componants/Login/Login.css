@@ -16,7 +16,7 @@
   background-color: green;
 }
 
-form {
+.Login > form {
   background-color: rgb(168, 14, 14);
   margin: 10px 50px;
   border-radius: 15px;

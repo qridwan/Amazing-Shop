@@ -11,9 +11,12 @@ import "./Order.css";
 
 function Order() {
   const [cart, setCart] = useState([]);
+  console.log(cart)
   useEffect(() => {
     const savedCart = getDatabaseCart();
+    console.log("🚀 ~ file: Order.js ~ line 16 ~ useEffect ~ savedCart", savedCart)
     const productKeys = Object.keys(savedCart);
+    console.log("🚀 ~ file: Order.js ~ line 19 ~ useEffect ~ productKeys", productKeys)
 
     fetch("https://emmajhon-server.herokuapp.com/productsByKeys", {
       method: "POST",

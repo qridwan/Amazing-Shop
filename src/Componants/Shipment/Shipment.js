@@ -1,20 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import { getDatabaseCart, processOrder } from "../../Info/utilities/databaseManager";
+import ProcessPayment from "../ProcessPayment/ProcessPayment";
 import "./Shipment.css";
 const Shipment = () => {
+  
+const [shippingData, setShippingData] = useState(null)
   const { register, handleSubmit, errors } = useForm();
   const [loggedIn ] = useContext(UserContext);
+  const onSubmit = (data) => { 
+    setShippingData(data)
+    };
 
-  const onSubmit = (data) => {
-    const savedCart = getDatabaseCart();
+    const handlePayment = (paymentId) => {
+      const savedCart = getDatabaseCart();
     const orderDetails = {
       ...loggedIn,
       products: savedCart,
-      shipment: data,
+      shipment: shippingData,
+      paymentId,
       orderTime: new Date(),
-    };
+    } 
 
     fetch("https://emmajhon-server.herokuapp.com/addOrder", {
       method: "POST",
@@ -28,14 +35,14 @@ const Shipment = () => {
         if (data) {
           processOrder()
           
-          alert("Order Confirmed!!");
         }
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+  <div className="row">
+    <div className="col-md-6" style={{display: shippingData? 'none': 'block'}}> <form onSubmit={handleSubmit(onSubmit)}>
       <input name="Name" defaultValue={loggedIn.name} ref={register} />
 
       <input
@@ -56,8 +63,8 @@ const Shipment = () => {
       )}
 
       <input
-        name="exampleRequired"
-        placeholder="Adress"
+        name="address"
+        placeholder="Address"
         ref={register({ required: true })}
       />
       {errors.exampleRequired && (
@@ -65,7 +72,11 @@ const Shipment = () => {
       )}
 
       <input type="submit" />
-    </form>
+    </form></div>
+    <div style={{display: shippingData? 'block': 'none'}} className="col-md-5 m-3">
+      <ProcessPayment handlePayment={handlePayment}/>
+    </div>
+  </div>
   );
 };
 

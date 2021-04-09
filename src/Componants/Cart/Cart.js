@@ -2,6 +2,7 @@ import React from "react";
 
 const Cart = (props) => {
   const cart = props.cart;
+  console.log("🚀 ~ file: Cart.js ~ line 5 ~ Cart ~ cart", cart)
 
   // let productPrice = 0;
   // cart.map((arr) => (productPrice = productPrice + arr.price * (arr.quantity || 1) ));

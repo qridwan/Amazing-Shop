@@ -11,12 +11,12 @@ import "./Shop.css";
 const Shop = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
-
+const [search, setSearch] = useState('');
   useEffect(() => {
-    fetch("https://emmajhon-server.herokuapp.com/product")
+    fetch("https://emmajhon-server.herokuapp.com/product?search="+search)
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     const savedCart = getDatabaseCart();
@@ -31,9 +31,15 @@ const Shop = () => {
       .then((res) => res.json())
       .then((data) => setCart(data));
   }, []);
-
+console.log(cart)
   const clickHandle = (prod) => {
-    const sameProduct = cart.find((pd) => pd.key === prod.key);
+    const toBeAddedKey = prod.key;
+    console.log("🚀 ~ file: Shop.js ~ line 37 ~ clickHandle ~ toBeAddedKey", toBeAddedKey)
+console.log(cart)
+    const sameProduct = cart.find((pd => pd.key === toBeAddedKey))
+
+    console.log("🚀 ~ file: Shop.js ~ line 37 ~ clickHandle ~ sameProduct", sameProduct);
+
     let newCart;
     let count = 1;
     if (sameProduct) {
@@ -42,16 +48,22 @@ const Shop = () => {
       const others = cart.filter((pd) => pd.key !== prod.key);
       newCart = [...others, sameProduct];
       setCart(newCart);
-    } else {
-      prod.quantity = 1;
+    } 
+    else {
+      console.log(prod)
+      prod.quantity = 1 ;
       newCart = [...cart, prod];
       setCart(newCart);
     }
-
     addToDatabaseCart(prod.key, count);
   };
-
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  }
+console.log(cart)
   return (
+    <>
+     <input type="text" placeholder=" SEARCH" onBlur={handleSearch} style={{}}/>
     <div className="shop-container">
       <div className="product-container">
         {products.map((pd, index) => (
@@ -70,7 +82,7 @@ const Shop = () => {
           </Link>
         </Cart>
       </div>
-    </div>
+    </div></>
   );
 };
 
